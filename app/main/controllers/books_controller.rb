@@ -4,8 +4,12 @@ module Main
       puts "index"
     end
     
+    def before_book_remove
+      @params_watch.stop
+    end
+    
     def book
-      puts "book"
+      @params_watch = proc { puts params._book }.watch!
     end
   end
 end
